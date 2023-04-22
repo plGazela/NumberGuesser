@@ -1,0 +1,105 @@
+:root {
+    --background-main: #7286D3;
+    --background-correct-answer: #B3C99C;
+    --background-wrong-answer: #E97777;
+
+    --text-color: #FFFFFF;
+    --secondary-text-color: #000000;
+}
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+p {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+input, button {
+    margin: 28px 12px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    text-align: center;
+    border: none;
+}
+
+.game {
+    display: grid;
+    background: var(--background-main);
+}
+
+.game__flex {
+    display: flex;
+    justify-content: center;
+}
+
+.game__points {
+    color: var(--text-color);
+    font-size: 5rem;
+}
+
+.game__task {
+    color: var(--secondary-text-color);
+    opacity: 0.50;
+    font-size: 1.5rem;
+    letter-spacing: 0.3rem;
+}
+
+.game__restart {
+    display: none;
+}
+
+.game__answer {
+    outline: 0;
+    width: 100px;
+    color: var(--text-color);
+    background: none;
+    border-bottom: 5px solid; 
+    border-radius: 4px;
+}
+.game__answer::placeholder {
+    color: var(--text-color);
+}
+.game__answer::-webkit-outer-spin-button, .game__answer::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.game__answer-submit, .game__restart {
+    width: fit-content;
+    border-radius: 50px;
+    padding: 12px 16px;
+    background: #e7e7e7;
+    font-weight: bold;
+    border: 8px solid #FFFFFF;
+}
+.game__answer-submit:focus, .game__restart:focus {
+    outline: 0;
+}
+.game__answer-submit:hover, .game__restart:hover {
+    cursor: pointer;
+    box-shadow: inset 0px 0px 15px -5px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes wrong-answer-animation {
+    0% {
+        background: var(--background-main);
+    }
+    50% {
+        background: var(--background-wrong-answer);
+    }
+    100% {
+        background: var(--background-main);
+    }
+}
+@keyframes correct-answer-animation {
+    0% {
+        background: var(--background-main);
+    }
+    50% {
+        background: var(--background-correct-answer);
+    }
+    100% {
+        background: var(--background-main);
+    }
+}
