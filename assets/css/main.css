@@ -1,3 +1,4 @@
+/* Color palette */
 :root {
     --background-main: #7286D3;
     --background-correct-answer: #B3C99C;
@@ -7,97 +8,104 @@
     --secondary-text-color: #000000;
 }
 
+/* Default blocks */
 * {
     font-family: 'Montserrat', sans-serif;
 }
 p {
+    font-size: 1.5rem;
+    font-weight: bold;
     text-align: center;
     text-transform: uppercase;
-    font-weight: 700;
+    letter-spacing: 0.3rem;
 }
 input, button {
     margin: 28px 12px;
     font-size: 1.5rem;
+    text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.3rem;
-    text-align: center;
     border: none;
 }
 
+/* Components */
+
+/* Body */
 .game {
-    display: grid;
     background: var(--background-main);
 }
 
+/* Positioning */
 .game__flex {
     display: flex;
     justify-content: center;
 }
 
+/* Points */
 .game__points {
     color: var(--text-color);
     font-size: 5rem;
 }
 
+/* Task */
 .game__task {
     color: var(--secondary-text-color);
     opacity: 0.50;
-    font-size: 1.5rem;
-    letter-spacing: 0.3rem;
 }
 
-.game__restart {
-    display: none;
-}
-
+/* Input */
 .game__answer {
-    outline: 0;
     width: 100px;
     color: var(--text-color);
     background: none;
-    border-bottom: 5px solid; 
-    border-radius: 4px;
-}
-.game__answer::placeholder {
-    color: var(--text-color);
+    border-bottom: 6px solid; 
+    border-radius: 6px;
+    outline: 0;
 }
 .game__answer::-webkit-outer-spin-button, .game__answer::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
-.game__answer-submit, .game__restart {
-    width: fit-content;
-    border-radius: 50px;
+/* Buttons */
+.game__submit, .game__restart {
     padding: 12px 16px;
+    border: 8px solid #FFFFFF;
+    border-radius: 50px; 
     background: #e7e7e7;
     font-weight: bold;
-    border: 8px solid #FFFFFF;
 }
-.game__answer-submit:focus, .game__restart:focus {
+.game__submit:focus, .game__restart:focus {
+    box-shadow: inset 0px 0px 15px -5px rgba(0, 0, 0, 0.5);
     outline: 0;
 }
-.game__answer-submit:hover, .game__restart:hover {
-    cursor: pointer;
+.game__submit:hover, .game__restart:hover {
     box-shadow: inset 0px 0px 15px -5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
 }
 
-@keyframes wrong-answer-animation {
-    0% {
-        background: var(--background-main);
-    }
-    50% {
-        background: var(--background-wrong-answer);
-    }
-    100% {
-        background: var(--background-main);
-    }
+/* Restart button */
+.game__restart {
+    display: none;
 }
-@keyframes correct-answer-animation {
+
+/* Correct and wrong answer background animation */
+@keyframes correct-answer {
     0% {
         background: var(--background-main);
     }
     50% {
         background: var(--background-correct-answer);
+    }
+    100% {
+        background: var(--background-main);
+    }
+}
+@keyframes wrong-answer {
+    0% {
+        background: var(--background-main);
+    }
+    50% {
+        background: var(--background-wrong-answer);
     }
     100% {
         background: var(--background-main);
