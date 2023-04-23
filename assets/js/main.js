@@ -1,3 +1,5 @@
+// TOOD: Delete repeating numbers
+
 // Game init
 function gameStart() {
     // UI elements
@@ -13,11 +15,16 @@ function gameStart() {
     const submitBtn = document.getElementsByClassName("game__answer-submit")[0];
     const restartBtn = document.getElementsByClassName("game__restart")[0];
 
-    // Game init
+    // Variables
+    let gamedrawnNumbers = [];
     let gameDifficultyLevel = 0;
     let gamePlayerLives = 3;
     let gamePlayerPoints = 0;
     let gameDrawnNumber = drawNumber(gameDifficultyLevel);
+
+    gamedrawnNumbers.push(gameDrawnNumber);
+
+    answerIn.focus()
 
     // DEBUG
     console.log("Drawn number: ", gameDrawnNumber);
@@ -60,6 +67,10 @@ function gameStart() {
 
             // Draw new number
             gameDrawnNumber = drawNumber(gameDifficultyLevel);
+            while(checkNumber(gameDrawnNumber, gamedrawnNumbers) == true) {
+                gameDrawnNumber = drawNumber(gameDifficultyLevel);
+            }
+            gamedrawnNumbers.push(gameDrawnNumber);
 
             // DEBUG
             console.log("Drawn number: ", gameDrawnNumber);
@@ -130,6 +141,18 @@ function checkGuess(drawnNumber) {
     } else {
         return false;
     }
+}
+
+// Checking number repeatability
+function checkNumber(drawnNumber, ...drawnNumbers) {
+    for(let i=0; i<drawnNumbers[0].length; i++) {
+        if(drawnNumber === drawnNumbers[0][i]) {
+
+            return true;
+        }
+    }
+
+    return false;
 }
 
 // Correct and wrong answer broswer effect
